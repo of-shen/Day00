@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.james.dao.BuyDao">
+    <!--//全查购买-->
+    <!--List<Buy> getAllBey();-->
+
+    <select id="getAllBey" resultType="com.james.pojo.Buy">
+        select * from buy
+    </select>
+
+    <!--//id 查购买-->
+    <!--Buy  getAllBuyBid(int bid);-->
+
+    <select id="getAllBuyBid" resultType="Buy">
+        select * from buy where bid=#{bid}
+    </select>
+
+    <!--//修改购买-->
+    <!--boolean updateBuy(int bid);-->
+
+    <update id="updateBuy">
+        update buy set bname=#{bname},bvehicke=#{bvehicke},bcolor=#{bcolor},bcount=#{bcount},bmoney=#{bmoney} where bid=#{bid}
+    </update>
+
+    <!--//删除不为买和卖可删除-->
+    <!--boolean seleteBuy(int bid);-->
+
+    <delete id="seleteBuy">
+        delete from buy where bid=#{bid}
+    </delete>
+
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.james.dao.VehicleDao">
+    <!--//全查-->
+    <!--List<Vehicle>getAllVehicle();-->
+    <select id="getAllVehicle" resultType="com.james.pojo.Vehicle">
+        select * from vehicle
+    </select>
+
+    <!--//名字查-->
+    <!--Vehicle getAllVehicleVname(String vname);-->
+<select id="getAllVehicleVname" resultType="com.james.pojo.Vehicle">
+    select * from vehicle where vname=#{vname}
+</select>
+
+        <!--//添加商品-->
+    <!--boolean insertVehicle(Vehicle vehicle );-->
+
+    <insert id="insertVehicle">
+        insert into vehicle
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="vid!=null">
+                vid,
+            </if>
+            <if test="vname!=null">
+                vname,
+            </if>
+            <if test="vpictur!=null">
+                vpicture,
+            </if>
+            <if test="brand!=null">
+                vbrand,
+            </if>
+            <if test="vsite!=null">
+                vsite,
+            </if>
+            <if test="vsort!=null">
+                vsort,
+            </if>
+            <if test="vworkoff!=null">
+                vworkoff,
+            </if>
+            <if test="vcolor!=null">
+                vcolor,
+            </if>
+            <if test="vmoney!=null">
+                vmoney,
+            </if>
+            <if test="vli!=null">
+                vli,
+            </if>
+            <if test="pid!=null">
+                pid,
+            </if>
+
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="vid!=null">
+                #{vid},
+            </if>
+            <if test="vname!=null">
+                #{vname},
+            </if>
+            <if test="vpictur!=null">
+                #{vpicture},
+            </if>
+            <if test="brand!=null">
+                #{vbrand},
+            </if>
+            <if test="vsite!=null">
+                #{vsite},
+            </if>
+            <if test="vsort!=null">
+                #{vsort},
+            </if>
+            <if test="vworkoff!=null">
+                #{vworkoff},
+            </if>
+            <if test="vcolor!=null">
+                #{vcolor},
+            </if>
+            <if test="vmoney!=null">
+                #{vmoney},
+            </if>
+            <if test="vli!=null">
+                #{vli},
+            </if>
+            <if test="pid!=null">
+                #{pid},
+            </if>
+
+        </trim>
+    </insert>
+    <!--//修改商品-->
+    <!--boolean updateVehicle(int vid);-->
+    <update id="updateVehicle">
+        update vehicle
+        <set>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uname!=null">
+                vnamr=#{uname},
+            </if>
+            <if test="vpicture!=null">
+                vpicture=#{vpicture},
+            </if>
+            <if test="vbrand!=null">
+                vbrand=#{vbrand},
+            </if>
+            <if test="vsite!=null">
+                vsite=#{},
+            </if>
+            <if test="vsort!=null">
+                vsort =#{vsite},
+            </if>
+            <if test="vworkoff!=null">
+                vworkoff=#{vworkoff},
+            </if>
+            <if test="vcolor!=null">
+                vcolor=#{vcolor},
+            </if>
+            <if test="vmoney!=null">
+                vmoney=#{vmoney},
+            </if>
+            <if test="vli!=null">
+                v;li=#{vli},
+            </if>
+            <if test="pid!=null">
+                pid=#{pid},
+            </if>
+
+        </trim>
+        </set>
+        where vid=#{vid}
+    </update>
+
+    <!--//删除商品删除-->
+    <!--boolean deleteVehicle(int vid);-->
+    <delete id="deleteVehicle" parameterType="com.james.pojo.Vehicle">
+        delete from vehicle where vid=#{vid}
+    </delete>
+</mapper>

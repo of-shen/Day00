@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.james.dao.ProductdatailsDao">
+    <!--//商品详情-->
+    <!--Productdatails getAllProductdatailsDao(String vname);-->
+    <select id="getAllProductdatailsDao" resultType="com.james.pojo.Productdatails">
+        select p.pid,p.pname,p.pvehicle,p.pcost,p.pcolor,p.ppresenter,p.ptime,p.psite from
+        vehicle v,
+        productdatails p
+        where v.pid=p.pid
+        and v.vname=#{vname}
+    </select>
+
+    <!--//添加商品详情-->
+    <!--Productdatails insertProductails(String vname);-->
+    <insert id="insertProductails" >
+        insert into productails values (#{pid},#{pname},#{pvehicle},#{pcost},#{pcolor},#{ppresenter},date(now()),#{psite})
+    </insert>
+
+</mapper>

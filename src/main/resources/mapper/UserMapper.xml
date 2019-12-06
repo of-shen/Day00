@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.james.dao.IUsersDao">
+    <!--//全查-->
+    <!--List<Users>getUsers();-->
+
+    <select id="getUsers" resultType="Users">
+        select * from users
+    </select>
+
+    <!--//id查询-->
+    <!--Users getUserUid(int uid);-->
+
+    <select id="getUserUid" resultType="com.james.pojo.Users">
+        select * from users where uid=#{uid}
+    </select>
+
+    <!--//查询用户-->
+    <!--Users userlogim(String uname,String upass);-->
+    <select id="login" resultType="com.james.pojo.Users">
+        select * from users where uname=#{arg0} and upass=#{arg1}
+    </select>
+
+    <!--//添加新用户-->
+    <!--boolean insertUsers(Users u);-->
+    <insert id="insertUsers" >
+         insert into users values(null,#{uname},#{upass},#{email},#{grade},date(now()),0,0,0)
+    </insert>
+    <!--//删除用户o-->
+    <!--int deleteUsers(int uid);-->
+    <delete id="deleteUsers">
+        delete from users where uid=#{uid}
+    </delete>
+
+    <!--&lt;!&ndash;//用户密码查询&ndash;&gt;-->
+    <!--&lt;!&ndash;Users login(String uname );&ndash;&gt;-->
+<!--<select id="login" resultType="users">-->
+    <!--select * from users where uname=#{uname}-->
+<!--</select>-->
+
+    <!--&lt;!&ndash;//用户权限等级查询&ndash;&gt;-->
+    <!--&lt;!&ndash;List<String> getRodeBYUname(String uname);&ndash;&gt;-->
+    <!--<select id="getRodeBYUname" resultType="String" >-->
+        <!--select r.rode from-->
+        <!--users u,-->
+        <!--user_rode ur,-->
+        <!--rode r-->
+        <!--where u.uid=ur.uid,-->
+        <!--and ur.rrid=r.rrid,-->
+        <!--and u.uname=#{uname}-->
+    <!--</select>-->
+
+    <!--&lt;!&ndash;用户角色权限查询&ndash;&gt;-->
+    <!--&lt;!&ndash;List<String>getRankByUname(String uname);&ndash;&gt;-->
+    <!--<select id="getRankByUname" resultType="String">-->
+        <!--select distinct p.name from-->
+        <!--users u;-->
+        <!--user_rode ur,-->
+        <!--rode r,-->
+        <!--rank_rode rr,-->
+        <!--rank k-->
+        <!--where u.uid=ur.uid,-->
+        <!--and ur.rrid=r.rrid,-->
+        <!--and r.rrid=rr.rrid,-->
+        <!--and rr.rid=k.rid-->
+        <!--and u.uname=#{uname}-->
+    <!--</select>-->
+
+
+
+</mapper>

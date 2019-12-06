@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.james.dao.DetailsDao">
+
+    <!--//全部信息-->
+    <!--List<Details> getAllDetails();-->
+    <select id="getAllDetails" resultType="com.james.pojo.Details">
+        select * from details
+    </select>
+
+    <!--Details findBySellerName(String dname);-->
+    <select id="findBySellerName" resultType="com.james.pojo.Details">
+        select details.did from details where dname=#{dname}
+    </select>
+
+    <!--//所以个人信息-->
+    <!--Details getDetailsDid(int did);-->
+    <select id="getDetailsDid" resultType="com.james.pojo.Details">
+        select * from details where did=#{did}
+    </select>
+
+    <!--//个人信息-->
+    <!--Details GetAllDetailsuid(int uid);-->
+     <select id="GetAllDetailsuid" resultType="com.james.pojo.Details">
+         select u.* ,d.* from details d, users u
+         where u.did=d.did
+         and uid=#{uid}
+     </select>
+
+    <!--//修改信息-->
+    <!--boolean updateDetails(int did);-->
+    <update id="updateDetails">
+        update details set dname=#{dname},dcord=#{dcord},dcell=#{dcell},dsite=#{dsite},dprovice=#{dprovice},dcity=#{dcity},dsex=#{dsex}
+        where did=#{did}
+    </update>
+
+    <!--//新增-->
+    <!--boolean inserDetails(Details details);-->
+    <insert id="inserDetails">
+
+        insert into details values (null ,#{dname},#{dcord},#{dcell},#{dsite},#{dprovice},#{dcity},#{dsex})
+    </insert>
+</mapper>
